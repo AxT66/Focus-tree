@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Banking War Mode</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+    <!-- App Container -->
+    <div class="app-container">
+        <!-- Header -->
+        <header class="top-nav">
+            <h1 id="page-title">Dashboard</h1>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="content-area">
+            <!-- Dashboard View -->
+            <section id="view-dashboard" class="view active">
+                <div class="glass-card streak-card">
+                    <h2>Current Streak</h2>
+                    <div class="streak-count"><span id="current-streak">0</span> Days</div>
+                    <div class="streak-best">Best: <span id="best-streak">0</span></div>
+                </div>
+                <div class="glass-card summary-card mt-4">
+                    <h3>Today's Progress</h3>
+                    <p id="dashboard-quote">Ready to crush your goals?Anurag </p>
+                </div>
+
+                <h3 class="mt-4">Quick Actions</h3>
+                <div class="grid-2-col"
+                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
+                    <button id="nav-mock-tests" class="btn btn-secondary"
+                        style="padding: 15px; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                        Mock Tests
+                    </button>
+                    <button id="nav-focus-mode" class="btn btn-secondary"
+                        style="padding: 15px; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        Focus Mode
+                    </button>
+                    <button id="nav-future-self" class="btn btn-secondary"
+                        style="padding: 15px; display: flex; flex-direction: column; align-items: center; gap: 8px; grid-column: span 2;">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                            <line x1="12" y1="19" x2="12" y2="23"></line>
+                            <line x1="8" y1="23" x2="16" y2="23"></line>
+                        </svg>
+                        Future Self Voice
+                    </button>
+                </div>
+            </section>
+
+            <!-- Subjects View -->
+            <section id="view-subjects" class="view">
+                <div class="header-actions">
+                    <h2>Subjects</h2>
+                    <button id="add-subject-btn" class="btn btn-primary">+ Add</button>
+                </div>
+                <div id="subjects-list" class="list-container">
+                    <!-- Subjects injected here via JS -->
+                </div>
+            </section>
+
+            <!-- Subject Detail View -->
+            <section id="view-subject-detail" class="view">
+                <div class="header-actions">
+                    <button id="back-to-subjects" class="btn btn-secondary">← Back</button>
+                </div>
+                <h2 id="detail-subject-name">Subject Name</h2>
+                <div class="glass-card mt-2 mb-4">
+                    <div class="flex-between">
+                        <span>Overall Accuracy: <strong id="detail-subject-accuracy">0%</strong></span>
+                        <span>Total Topics: <strong id="detail-subject-topics-count">0</strong></span>
+                    </div>
+                </div>
+                <div class="header-actions mt-4">
+                    <h3>Topics</h3>
+                    <button id="add-topic-btn" class="btn btn-primary btn-sm">+ Topic</button>
+                </div>
+                <div id="topics-list" class="list-container">
+                    <!-- Topics injected here -->
+                </div>
+            </section>
+
+            <!-- Log Session View -->
+            <section id="view-log-session" class="view">
+                <div class="header-actions">
+                    <button id="back-to-topic" class="btn btn-secondary">← Back</button>
+                </div>
+                <h2>Log Study Session</h2>
+                <h3 id="log-session-topic-name" class="mt-2 text-primary">Topic Name</h3>
+
+                <form id="log-session-form" class="mt-4 form-container">
+                    <div class="form-group">
+                        <label>Questions Attempted</label>
+                        <input type="number" id="log-attempted" required min="1" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Correct Answers</label>
+                        <input type="number" id="log-correct" required min="0" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Time Spent (minutes)</label>
+                        <input type="number" id="log-time" required min="1" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-4 w-full">Save Session</button>
+                </form>
+            </section>
+
+            <!-- Mock Tests List View -->
+            <section id="view-mock-tests" class="view">
+                <div class="header-actions">
+                    <button id="back-to-dash-from-mocks" class="btn btn-secondary">← Back</button>
+                    <button id="add-mock-test-btn" class="btn btn-primary">+ Add</button>
+                </div>
+                <h2>Mock Tests</h2>
+                <div id="mock-tests-list" class="list-container mt-4">
+                    <!-- Mocks injected here -->
+                </div>
+            </section>
+
+            <!-- Log Mock Test View -->
+            <section id="view-log-mock" class="view">
+                <div class="header-actions">
+                    <button id="back-to-mocks" class="btn btn-secondary">← Back</button>
+                </div>
+                <h2>Log Mock Test</h2>
+                <form id="log-mock-form" class="mt-4 form-container">
+                    <div class="form-group">
+                        <label>Mock Name / Details</label>
+                        <input type="text" id="mock-name" required class="form-control"
+                            placeholder="e.g. SBI PO Prelims 1">
+                    </div>
+                    <div class="form-group">
+                        <label>Total Score</label>
+                        <input type="number" step="0.25" id="mock-score" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Time Taken (mins)</label>
+                        <input type="number" id="mock-time" required min="1" class="form-control">
+                    </div>
+                    <h3 class="mt-4 mb-2">Sectional Scores</h3>
+                    <div class="form-group">
+                        <label>Quantitative Aptitude</label>
+                        <input type="number" step="0.25" id="mock-quant" class="form-control section-score">
+                    </div>
+                    <div class="form-group">
+                        <label>Reasoning Ability</label>
+                        <input type="number" step="0.25" id="mock-reasoning" class="form-control section-score">
+                    </div>
+                    <div class="form-group">
+                        <label>English Language</label>
+                        <input type="number" step="0.25" id="mock-english" class="form-control section-score">
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-4 w-full">Save Mock Test</button>
+                </form>
+            </section>
+
+            <!-- Battle Plan View -->
+            <section id="view-battle-plan" class="view">
+                <h2>Daily Battle Plan</h2>
+                <div id="battle-plan-container">
+                    <!-- Tasks injected here -->
+                    <p class="empty-state">Generate a plan to start your day.</p>
+                </div>
+            </section>
+
+            <!-- Analytics View -->
+            <section id="view-analytics" class="view">
+                <h2>Performance Analytics</h2>
+
+                <div class="glass-card mt-4">
+                    <h3>Study Consistency</h3>
+                    <div id="heatmap-container" style="display: flex; flex-wrap: wrap; gap: 4px; margin-top: 15px;">
+                        <!-- Heatmap boxes set via JS -->
+                    </div>
+                    <p class="mt-2" style="font-size: 0.8rem; color: var(--text-muted); text-align:right;">Last 30 Days
+                    </p>
+                </div>
+
+                <div class="glass-card mt-4">
+                    <h3>Weakest Topics</h3>
+                    <div id="weak-topics-list" class="mt-2 text-danger">
+                        <!-- Listed via JS -->
+                    </div>
+                </div>
+
+                <div class="glass-card mt-4">
+                    <h3>Subject Overview</h3>
+                    <div id="subject-performance-list" class="mt-2">
+                        <!-- Subject average accuracy bars -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings View -->
+            <section id="view-settings" class="view">
+                <h2>Settings</h2>
+                <div class="settings-group glass-card mt-4">
+                    <h3>Data Management</h3>
+                    <button id="export-data" class="btn btn-secondary mt-2">Export Backup (JSON)</button>
+                    <button id="import-data" class="btn btn-secondary mt-2">Restore Backup</button>
+                    <input type="file" id="import-file" accept=".json" style="display: none;">
+                </div>
+            </section>
+            <!-- Focus Mode View -->
+            <section id="view-focus-mode" class="view">
+                <div class="header-actions">
+                    <button class="btn btn-secondary back-to-dash">← Back</button>
+                    <h2>Focus Mode</h2>
+                </div>
+
+                <div class="glass-card mt-4" style="text-align: center; padding: 40px 20px;">
+                    <div id="focus-timer-display"
+                        style="font-size: 4rem; font-weight: 800; color: var(--primary); letter-spacing: 2px; font-variant-numeric: tabular-nums;">
+                        60:00
+                    </div>
+                    <p class="mt-2 mb-4">Stay focused. Distractions off.</p>
+
+                    <div class="d-flex" style="display: flex; justify-content: center; gap: 15px; margin-top: 30px;">
+                        <button id="focus-start-btn" class="btn btn-primary"
+                            style="width: 120px; padding: 12px;">Start</button>
+                        <button id="focus-pause-btn" class="btn btn-secondary"
+                            style="width: 120px; padding: 12px; display: none;">Pause</button>
+                        <button id="focus-stop-btn" class="btn btn-secondary"
+                            style="width: 120px; padding: 12px; color: var(--danger); border-color: rgba(239, 68, 68, 0.3);">Stop</button>
+                    </div>
+                </div>
+
+                <div id="focus-log-form-container" class="mt-4" style="display: none;">
+                    <h3>Session Complete!</h3>
+                    <p>What did you study during this focus block?</p>
+                    <form id="focus-log-form" class="form-container mt-2">
+                        <div class="form-group">
+                            <label>Select Topic</label>
+                            <select id="focus-topic-select" class="form-control" required>
+                                <!-- Topics injected here -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Questions Attempted</label>
+                            <input type="number" id="focus-attempted" required min="1" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Correct Answers</label>
+                            <input type="number" id="focus-correct" required min="0" class="form-control">
+                        </div>
+                        <input type="hidden" id="focus-time-spent" value="60">
+                        <button type="submit" class="btn btn-primary mt-2 w-full">Save Session</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Future Self View -->
+            <section id="view-future-self" class="view">
+                <div class="header-actions">
+                    <button class="btn btn-secondary back-to-dash">← Back</button>
+                    <h2>Future Self Voice</h2>
+                </div>
+
+                <div class="glass-card mt-4" style="text-align: center;">
+                    <p class="mb-4">Record a message to motivate yourself or scold yourself for missing a study day. It
+                        will play automatically when you break your streak!</p>
+
+                    <div id="recording-status"
+                        style="margin: 20px 0; font-weight: bold; color: var(--danger); display: none;">
+                        Recording... <span id="recording-indicator" style="animation: pulse 1s infinite;">●</span>
+                    </div>
+
+                    <div class="d-flex" style="display: flex; justify-content: center; gap: 15px; margin-top: 20px;">
+                        <button id="btn-start-record" class="btn btn-primary"
+                            style="border-radius: 50%; width: 60px; height: 60px; padding: 0; display: flex; align-items: center; justify-content: center;">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                                <line x1="12" y1="19" x2="12" y2="23"></line>
+                                <line x1="8" y1="23" x2="16" y2="23"></line>
+                            </svg>
+                        </button>
+                        <button id="btn-stop-record" class="btn btn-secondary"
+                            style="border-radius: 50%; width: 60px; height: 60px; padding: 0; display: none; align-items: center; justify-content: center; color: var(--danger); border-color: rgba(239,68,68,0.3);">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                                <rect x="6" y="6" width="12" height="12"></rect>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div id="audio-playback-container" class="mt-4" style="display: none;">
+                        <h4 class="mb-2">Your Current Message</h4>
+                        <audio id="future-self-audio" controls style="width: 100%; border-radius: 8px;"></audio>
+                        <button id="btn-delete-audio" class="btn btn-secondary mt-2 w-full"
+                            style="color: var(--danger); border-color: rgba(239, 68, 68, 0.3);">Delete
+                            Recording</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" data-target="dashboard">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <rect x="3" y="3" width="7" height="9"></rect>
+                    <rect x="14" y="3" width="7" height="5"></rect>
+                    <rect x="14" y="12" width="7" height="9"></rect>
+                    <rect x="3" y="16" width="7" height="5"></rect>
+                </svg>
+                <span>Dashboard</span>
+            </button>
+            <button class="nav-item" data-target="subjects">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                <span>Subjects</span>
+            </button>
+            <button class="nav-item" data-target="battle-plan">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                </svg>
+                <span>Battle Plan</span>
+            </button>
+            <button class="nav-item" data-target="analytics">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M3 3v18h18"></path>
+                    <path d="M18 17V9"></path>
+                    <path d="M13 17V5"></path>
+                    <path d="M8 17v-3"></path>
+                </svg>
+                <span>Analytics</span>
+            </button>
+            <button class="nav-item" data-target="settings">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path
+                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                    </path>
+                </svg>
+                <span>Settings</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/db.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/streak.js"></script>
+    <script src="js/subjects.js"></script>
+    <script src="js/topics.js"></script>
+    <script src="js/study.js"></script>
+    <script src="js/battlePlan.js"></script>
+    <script src="js/mockTests.js"></script>
+    <script src="js/focusMode.js"></script>
+    <script src="js/futureSelf.js"></script>
+    <script src="js/analytics.js"></script>
+    <script src="js/backup.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('SW registered!', reg))
+                    .catch(err => console.error('SW registration failed:', err));
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Banking War Mode - The Ultimate Prep App</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+    <meta name="description" content="Personal exam preparation and tracking app designed for banking exam aspirants.">
+</head>
+<body class="landing-body">
+    <div class="landing-container">
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="hero-content">
+                <br><br>
+                <div class="badge">Crush Your Banking Exams</div>
+                <h1 class="hero-title">Banking <span class="text-gradient">War Mode</span></h1>
+                <p class="hero-subtitle">The ultimate, distraction-free preparation ecosystem to track subjects, dominate mock tests, and maintain your streak.</p>
+                <a href="app.html" class="btn btn-primary btn-launch">
+                    Launch App
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+            
+            <!-- Hero Decorative Graphic -->
+            <div class="hero-graphic">
+                <div class="glow-orb"></div>
+                <!-- Mockup Card 1 -->
+                <div class="glass-card mockup-card floating">
+                    <div class="flex-between">
+                        <div>
+                            <div class="text-sm text-muted">Current Streak</div>
+                            <div class="text-2xl text-primary font-bold">14 Days</div>
+                        </div>
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    </div>
+                </div>
+                <!-- Mockup Card 2 -->
+                <div class="glass-card mockup-card floating-delayed">
+                     <div class="text-sm text-muted">Focus Mode</div>
+                     <div class="text-xl font-bold mt-1">60:00 <span class="text-accent text-sm ml-2">Active</span></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Features Grid -->
+        <section class="features-section">
+            <h2 class="section-title">Everything You Need</h2>
+            <div class="feature-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card glass-card">
+                    <div class="feature-icon bg-primary-soft">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    </div>
+                    <h3>Subject Mastery</h3>
+                    <p>Track your accuracy across all topics. Identify weak points and focus your effort where it matters most.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="feature-card glass-card">
+                    <div class="feature-icon bg-warning-soft">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--warning)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    </div>
+                    <h3>Focus Mode</h3>
+                    <p>Enter deep work blocks. No distractions, just pure concentration with integrated topic logging.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="feature-card glass-card">
+                    <div class="feature-icon bg-accent-soft">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    </div>
+                    <h3>Mock Analysis</h3>
+                    <p>Log mock test scores with detailed sectional time and accuracy tracking. Watch your percentile grow.</p>
+                </div>
+                 <!-- Feature 4 -->
+                <div class="feature-card glass-card">
+                    <div class="feature-icon bg-danger-soft">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--danger)" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+                    </div>
+                    <h3>Future Self</h3>
+                    <p>Record voice memos to your future self. Stay motivated when the journey gets tough.</p>
+                </div>
+            </div>
+        </section>
+        
+        <footer class="landing-footer">
+            <p>&copy; 2026 Banking War Mode. Built for aspirants.</p>
+        </footer>
+    </div>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js');
+            });
+        }
+    </script>
+</body>
+</html>
